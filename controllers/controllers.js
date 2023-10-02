@@ -40,11 +40,11 @@ const sendVideo = async (req, res) => {
     }
 };
 
-const test = (req, res) => {
+const test = ( res) => {
     res.status(StatusCodes.OK).send('Hello');
 };
 
-const getVideos = async (req, res) => {
+const getVideos = async ( res) => {
     try {
         const files = await fs.promises.readdir(videoUploadPath);
         const videoFiles = files.filter((file) => {

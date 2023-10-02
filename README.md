@@ -2,7 +2,7 @@
 This repository contains the backend component of a Node.js application built with Express. It enables users to upload video files and retrieve a list of uploaded videos. Below, you'll find information on how to set up and use this backend.
 
 ## Features
-Video Upload: Users can upload video files (e.g., .mp4, .avi, .mkv) up to 50MB in size.
+Video Upload: Users can upload video files (e.g., .mp4, .avi, .mkv,webm).
 Video Display: Users can retrieve a list of uploaded videos.
 Prerequisites
 Before running the backend server, ensure you have the following prerequisites installed:
@@ -13,7 +13,7 @@ Clone the repository to your local machine:
 
 ```
 Copy code
-git clone https://github.com/urizennnn/HNG-chrome-extension-BE.git
+git clone <https://github.com/sticklo/chrome-extension>
 Navigate to the project directory:
 ```
 
@@ -29,7 +29,7 @@ Starting the Server
 To start the server, run the following command:
 
 npm start
-The server will run by default at http://localhost:4000, but you can change the port in the server.js file.
+The server will run by default at http://localhost:3000, but you can change the port in the server.js file.
 
 ## API Routes
 GET /: A test route that returns a "Hello" message.
@@ -40,7 +40,7 @@ GET /: A test route that returns a "Hello" message.
 }
 ```
 
-## POST /api/HNG/uploadfile: Allows users to upload video files. Follow these steps:
+## POST /api/extension/uploadfile: Allows users to upload video files. Follow these steps:
 ### Request body
 Set ```enctype``` to multipart/form-data and input name ```video```
 
@@ -67,31 +67,31 @@ Set up your request body as follows:
 Key: video
 Value: Choose the video file using the "Choose File" option.
 Hit send to upload the file.
-Uploaded files must be videos, and their size must not exceed 50MB.
 
-## GET /api/HNG/showvideos: Retrieves a list of uploaded videos and their URLs.
+
+## GET /api/extension/showvideos: Retrieves a list of uploaded videos and their URLs.
 ## Response
 ### Success:
 ```
 {
     "status": "Success",
-    "video": [list of available videoa]
+    "video": [list of available videos]
 }
 ```
 
 ## File Upload
-When uploading a video file, make a POST request to /api/HNG/uploadfile with a form data field named video containing the video file.
+When uploading a video file, make a POST request to /api/extension/uploadfile with a form data field named video containing the video file.
 
 ## Viewing Uploaded Videos
-To view the list of uploaded videos, make a GET request to /api/HNG/showvideos. This route will return a JSON response with URLs to the uploaded videos.
+To view the list of uploaded videos, make a GET request to /api/extension/showvideos. This route will return a JSON response with URLs to the uploaded videos.
 
 ### Transcribe endpoint:
-GET https://chrome-ext-server.onrender.com/transcribe/:filename
+GET https://chrome-extension-8bu9.onrender.com/transcribe/:filename
 ### Description: 
 Generate transcript for the uploaded 
 
 ### Request body
-https://chrome-ext-server.onrender.com/transcribe/Asynchronous JavaScript Tutorial 3  Status Codes.mp4
+https://chrome-extension-8bu9.onrender.com/transcribe/filename
 
 ## Response
 ### Success:
@@ -111,17 +111,10 @@ https://chrome-ext-server.onrender.com/transcribe/Asynchronous JavaScript Tutori
 ```
 
 
-### Technologies Used
-Node.js
-Express.js
-http-status-codes
-express-fileupload
-fs.promises
-Configuration
-You can configure this server by modifying the environment variables in the .env file.
+
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ### Author
-# Akaaha Victor Chukwunweike
+# Sticklo
