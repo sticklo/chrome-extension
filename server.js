@@ -20,7 +20,7 @@ app.use(cors())
 // middleware
 app.use(fileupload());
 //  routes
-app.use('/api/HNG', routes);
+app.use('/api/extension', routes);
 
 // Error handling middleware
 const notFoundMiddleware = require('./middleware/not-found');
@@ -34,7 +34,7 @@ app.get('/transcribe/:filename',async(req,res)=>{
         const { filename } = req.params
         console.log(filename)
         const response = await deepgram.transcription.preRecorded(
-            { url: "https://chrome-ext-server.onrender.com/uploads/" + filename },
+            { url: "https://chrome-extension-8bu9.onrender.com/uploads/" + filename },
             { punctuate: true, utterances: true }
         )
 
