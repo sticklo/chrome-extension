@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const {test,sendVideo,getVideos} = require('../controllers/controllers')
+const {test,pushVideo,getVideos} = require('../controllers/controllers')
 
 
 router.get('/',test)
-router.post('/uploadfile',sendVideo)
+router.post('/uploadfile',pushVideo)
 router.route('/showvideos').get(getVideos)
 module.exports = router

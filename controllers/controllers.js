@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const videoUploadPath = path.join(__dirname, '../server/uploads/');
 
-const sendVideo = async (req, res) => {
+const pushVideo = async (req, res) => {
     try {
         const video = req.files.video;
 
@@ -41,7 +41,7 @@ const sendVideo = async (req, res) => {
 };
 
 const test = ( res) => {
-    res.status(StatusCodes.OK).send('Hello');
+    res.status(StatusCodes.OK).send('Success');
 };
 
 const getVideos = async ( res) => {
@@ -61,7 +61,7 @@ const getVideos = async ( res) => {
 };
 
 module.exports = {
-    sendVideo,
+    pushVideo,
     test,
     getVideos,
 };

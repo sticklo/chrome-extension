@@ -36,7 +36,7 @@ GET /: A test route that returns a "Hello" message.
 ```
 {
     "status":200,
-    "message":"Hello"
+    "message":"Success"
 }
 ```
 
