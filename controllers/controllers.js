@@ -40,7 +40,7 @@ const pushVideo = async (req, res) => {
     }
 };
 
-const test = ( res) => {
+const test = ( req, res) => {
     res.status(StatusCodes.OK).send('Success');
 };
 
