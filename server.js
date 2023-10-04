@@ -7,8 +7,6 @@ const app = express();
 const routes = require('./routes/routes');
 const fileupload = require('express-fileupload');
 const morgan = require('morgan')
-const { Deepgram } = require("@deepgram/sdk");
-const deepgram = new Deepgram(process.env.DEEPGRAM_API_KEY);
 const cors = require('cors')
 
 
@@ -29,25 +27,26 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(errorHandlerMiddleware);
 
 
-app.get('/transcribe/:filename',async(req,res)=>{
-    try {
-        const { filename } = req.params
-        console.log(filename)
-        const response = await deepgram.transcription.preRecorded(
-            { url: "https://chrome-extension-8bu9.onrender.com/uploads/" + filename },
-            { punctuate: true, utterances: true }
-        )
+// app.get('/transcribe/:filename',async(req,res)=>{
+//     try {
+//         const { filename } = req.params
+//         console.log(filename)
+//         const response = await deepgram.transcription.preRecorded(
+//             {  stream: fs.createReadStream("/path/to/file"),
+//     mimetype: 'video/*'},
+//             { punctuate: true, utterances: true }
+//         )
 
-        const srtTranscript = response.toSRT();
+//         const srtTranscript = response.toSRT();
 
-        res.status(200).json({
-            status: "Success",
-            transcript: srtTranscript
-        })
-    } catch (error) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
-    }
-})
+//         res.status(200).json({
+//             status: "Success",
+//             transcript: srtTranscript
+//         })
+//     } catch (error) {
+//         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+//     }
+// })
 const port = process.env.PORT || 3000;
 
 (async () => {

@@ -2,6 +2,8 @@ const { CustomAPIErrorHandler } = require("../errors/custom-errors");
 const { StatusCodes } = require("http-status-codes");
 const path = require("path");
 const fs = require("fs");
+const { Deepgram } = require("@deepgram/sdk");
+const deepgram = new Deepgram(process.env.DEEPGRAM_API_KEY);
 
 const videoUploadPath = path.join(__dirname, "../server/uploads/");
 
@@ -75,8 +77,30 @@ const getVideos = async (req, res) => {
   }
 };
 
+const transcribeVideo = async(req,res) => {
+    try {
+        const { filename } = req.params
+        console.log(filename)
+        const response = await deepgram.transcription.preRecorded(
+            { stream: fs.createReadStream(`${videoUploadPath}/${filename}`),
+    mimetype: 'video/*'},
+            { punctuate: true, utterances: true }
+        )
+
+        const srtTranscript = response.toSRT();
+
+        res.status(200).json({
+            status: "Success",
+            transcript: srtTranscript
+        })
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+    }
+}
+
 module.exports = {
   pushVideo,
   test,
   getVideos,
+  transcribeVideo
 };
