@@ -86,12 +86,12 @@ When uploading a video file, make a POST request to /api/extension/uploadfile wi
 To view the list of uploaded videos, make a GET request to /api/extension/showvideos. This route will return a JSON response with URLs to the uploaded videos.
 
 ### Transcribe endpoint:
-GET https://chrome-extension-8bu9.onrender.com/transcribe/:filename
+GET https://chrome-extension-8bu9.onrender.com/api/extension/transcribe/:filename
 ### Description: 
 Generate transcript for the uploaded 
 
 ### Request body
-https://chrome-extension-8bu9.onrender.com/transcribe/filename
+https://chrome-extension-8bu9.onrender.com/api/extension/transcribe/filename
 
 ## Response
 ### Success:
